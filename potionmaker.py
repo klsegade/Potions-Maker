@@ -35,6 +35,10 @@ def traits_from_serial(serial, plant_type):
     return rng.sample(possible_traits, k=2)
 
 '''Data Library'''
+alchemicalOutputs = {
+    'potion', 'tonic', 'elixir', 'tincture', 'extract', 'infusion', 'salve', 'pills', 'powder', 'vaporous'
+}
+
 components = {
     "water" : {
         "category": "base",
@@ -144,23 +148,22 @@ modifiers = {
 }
 
 traits = {
-    aqueous, oleaginous, volatile, acidic, alkaline, mineral, organic, metallic, carbonaceous, 
-    combustive, stimulant, soothing, heating, cooling, drying, moistening, restorative, toxic, 
-    luminous, shadowed, transmutative, fermentative, preservative, binding, catalytic
+    aqueous, metallic, carbonaceous, combustive, heating, cooling, restorative, 
+    luminous, shadowed, transmutative, preservative, catalytic
 }
 mineralTraits = {
-    "salts": ['preservative', 'absorbent', 'crystalline'],
-    "alkaline": ['alkaline'],
-    "oxidizers": ['volatile', 'flammable'],
-    "reactive metals": ['metallic', 'volatile', 'toxic'],
+    "salts": ['preservative', 'absorbent', 'crystalline', 'conductive'],
+    "alkaline": ['alkaline','crystalline'],
+    "oxidizers": ['volatile', 'flammable', 'crystalline', 'conductive'],
+    "reactive metals": ['metallic', 'volatile', 'toxic', 'crystalline', 'conductive'],
     "pigments": ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 'brown', 'staining', 'light-sensitive']
 }
 
 plantTraits = {
-    "medicinal": ['soothing', 'cleansing', 'protection', 'restorative', 'stimulant', 'binding'],
-    "nutritional": ['caloric', 'stimulant', 'fortifying', 'hydrating', 'restorative', 'acidic', 'alkaline', 'sugary', 'absorbent'],
-    "toxic": ['poisonous', 'paralytic', 'acidic', 'necrotic', 'hallucinogenic', 'volatile'],
-    "fermentable": ['sugary', 'starchy', 'acidic'],
+    "medicinal": ['soothing', 'cleansing', 'protection', 'restorative', 'stimulant', 'binding', 'numbing'],
+    "nutritional": ['caloric', 'stimulant', 'fortifying', 'hydrating', 'restorative', 'acidic', 'alkaline', 'sweet', 'absorbent', 'spicy'],
+    "toxic": ['poisonous', 'paralytic', 'acidic', 'necrotic', 'hallucinogenic', 'volatile', 'irritant', 'numbing'],
+    "fermentable": ['sweet', 'starchy', 'acidic'],
     "psychoactives": ['hallucinogenic', 'sedative', 'stimulant', 'euphoric', 'dissociative'],
     "aromatics": ['aromatic', 'soothing', 'stimulant', 'preservative', 'repellant'],
     "pigments": ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 'brown', 'staining', 'light-sensitive'],
@@ -169,8 +172,8 @@ plantTraits = {
 
 animalTraits = {
     "lipids": ['binding', 'oily', 'waxy', 'protection', 'storing'],
-    "binders": ['binding', 'catalytic'],
-    "skeletal": ['alkaline', 'mineral'],
+    "binders": ['binding'],
+    "skeletal": ['alkaline', 'mineral', 'protection', 'fortifying'],
     "venoms": ['paralytic', 'toxic']
 }
 
@@ -179,8 +182,9 @@ fungalTraits = {
 }
 
 processedTraits = {
-    "distillates": ['volatile', 'concentrated', 'cleansing', 'acidic'],
-    "combustibles": ['alkaline', 'carbonaceous']
+    "distillates": ['volatile', 'concentrated', 'cleansing', 'acidic', 'aromatic'],
+    "combustibles": ['alkaline', 'carbonaceous'],
+    "refined": ['preservative']
 }
 
 qualitiesOfCreation = {
