@@ -1,30 +1,11 @@
 import random
 
 '''Component Classes'''
-class Base:
-    def __init__(self, name, modifiers, traits=None):
+class Component:
+    def __init__(self, name, traits, modifiers):
         self.name = name
+        self.traits = traits
         self.modifiers = modifiers
-        self.traits = traits or []
-
-class Stabilizer:
-    def __init__(self, name, modifiers, traits=None):
-        self.name = name
-        self.modifiers = modifiers
-        self.traits = traits or []
-
-class Booster:
-    def __init__(self, name, modifiers, traits=None):
-        self.name = name
-        self.modifiers = modifiers
-        self.traits = traits or []
-
-class Finisher:
-    def __init__(self, name, modifiers, traits=None):
-        self.name = name
-        self.modifiers = modifiers
-        self.traits = traits or []
-
 
 '''Seed Input'''
 def traits_from_serial(serial, plant_type):
@@ -36,18 +17,18 @@ def traits_from_serial(serial, plant_type):
 
 '''Data Library'''
 alchemicalOutputs = {
-    'potion', 'tonic', 'elixir', 'tincture', 'extract', 'infusion', 'salve', 'pills', 'powder', 'vaporous'
+    'potion', 'tonic', 'elixir', 'tincture', 'extract', 'infusion', 'salve', 'unguent', 'cream', 'pills', 'powder', 'vaporous'
 }
 
 components = {
     "water" : {
         "category": "base",
-        "traits": [],
+        "traits": ['hydrating'],
         "modifiers": {"stability":20, 'potency': 10}
     },
     "oil" : {
         "category": "base",
-        "traits": [],
+        "traits": ['oily'],
         "modifiers": {"stability":15, 'potency': 15}
     },
     "alcohol" : {
@@ -57,7 +38,7 @@ components = {
     },
     "acid" : {
         "category": "base",
-        "traits": [],
+        "traits": ['acidic'],
         "modifiers": {"stability":10, 'potency': 20}
     },
     "preservative" : {
@@ -67,47 +48,47 @@ components = {
     },
     "binder" : {
         "category": "stabilizer",
-        "traits": [],
+        "traits": ['binding'],
         "modifiers": {"stability":10, 'potency': 10}
     },
     "alkaline buffer" : {
         "category": "stabilizer",
-        "traits": [],
+        "traits": ['mineral', 'alkaline'],
         "modifiers": {"stability":10, 'potency': 10}
     },
     "caustic" : {
         "category": "booster",
-        "traits": [],
+        "traits": ['mineral', 'alkaline'],
         "modifiers": {"stability":10}
     },
     "oxidizer" : {
         "category": "booster",
-        "traits": [],
+        "traits": ['flammable', 'crystalline'],
         "modifiers": {"stability":10}
     },
     "combustive" : {
         "category": "booster",
-        "traits": [],
+        "traits": ['volatile', 'flammable'],
         "modifiers": {"stability":10}
     },
     "metallic reactive" : {
         "category": "booster",
-        "traits": [],
+        "traits": ['volatile'],
         "modifiers": {"stability":10}
     },
     "organic stimulant" : {
         "category": "booster",
-        "traits": [],
+        "traits": ['spicy'],
         "modifiers": {"stability":10}
     },
     "ferment catalyst" : {
         "category": "booster",
-        "traits": [],
+        "traits": ['fermentative'],
         "modifiers": {"stability":10}
     },
     "aromatic" : {
         "category": "finisher",
-        "traits": [],
+        "traits": ['aromatic'],
         "modifiers": {"stability":10}
     },
     "pigment" : {
@@ -122,22 +103,22 @@ components = {
     },
     "sweetener" : {
         "category": "finisher",
-        "traits": [],
+        "traits": ['sweet'],
         "modifiers": {"stability":10}
     },
     "absorbent" : {
         "category": "finisher",
-        "traits": [],
+        "traits": ['absorbent'],
         "modifiers": {"stability":10}
     },
     "mineral reactive" : {
         "category": "finisher",
-        "traits": [],
+        "traits": ['volatile'],
         "modifiers": {"stability":10}
     },
     "essence" : {
         "category": "finisher",
-        "traits": [],
+        "traits": ['concentrated'],
         "modifiers": {"stability":10}
     },
 }
@@ -149,12 +130,12 @@ modifiers = {
 
 traits = {
     aqueous, metallic, carbonaceous, combustive, heating, cooling, restorative, 
-    luminous, shadowed, transmutative, preservative, catalytic
+    luminous, shadowed, transmutative, catalytic
 }
 mineralTraits = {
     "salts": ['preservative', 'absorbent', 'crystalline', 'conductive'],
     "alkaline": ['alkaline','crystalline'],
-    "oxidizers": ['volatile', 'flammable', 'crystalline', 'conductive'],
+    "oxidizers": ['volatile', 'flammable', 'crystalline'],
     "reactive metals": ['metallic', 'volatile', 'toxic', 'crystalline', 'conductive'],
     "pigments": ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'pink', 'white', 'black', 'brown', 'staining', 'light-sensitive']
 }
